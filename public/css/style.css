@@ -1,0 +1,29 @@
+body {
+    font-style: oblique;
+    text-align: center;
+}
+
+.boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 130px);
+    grid-template-rows: repeat(3, 130px);
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.boxes div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid transparent;
+    border-image: url("../img/Fondo1.jpg") 30 round;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fbfbe5;
+}
+
+.boxes div:hover {
+    background-color: #d3d2d2;
+    
+}
