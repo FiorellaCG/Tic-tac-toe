@@ -1,8 +1,23 @@
+/* Fondo general de la página */
 body {
     font-style: oblique;
     text-align: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f0e1; /* color suave tipo pergamino */
+    position: relative;
 }
 
+/* Contenedor del contenido (para que quede encima del grid) */
+.contenedor {
+    position: relative;
+    z-index: 1;
+}
+
+/* Tablero */
 .boxes {
     display: grid;
     grid-template-columns: repeat(3, 130px);
@@ -21,25 +36,38 @@ body {
     font-weight: bold;
     cursor: pointer;
     background-color: #fbfbe5;
+    transition: transform 0.2s ease-in-out;
 }
 
 .boxes div:hover {
     background-color: #d3d2d2;
-    transform: scale(1.05);
+    transform: scale(1.10);
 }
 
+/* Botón */
 button {
-  background: linear-gradient(90deg, #c9b592, #f4e1bd); /* Gradient colors */
-  border: none;
-  color: black;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-style: oblique;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+    background: #c9b592;
+    border: 1px solid #b1a084;
+    color: white;
+    padding: 12px 24px;
+    font-size: 25px;
+    font-style: oblique;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
 button:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.10); 
 }
+
+h1 {
+    color: #c9b592;
+}
+
+h2{
+  color: #c9b592;
+}
+
+
+
