@@ -5,16 +5,13 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f0e1; /* color suave tipo pergamino */
-    position: relative;
-}
+    background-color: #f5f0e1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: flex-start;
+    background-size: cover;
 
-/* Contenedor del contenido (para que quede encima del grid) */
-.contenedor {
-    position: relative;
-    z-index: 1;
 }
 
 /* Tablero */
@@ -44,7 +41,29 @@ body {
     transform: scale(1.10);
 }
 
-/* Botón */
+h1 {
+  font-family: 'Cursive', serif;
+  font-size: 2.5em;
+  color: #7c6b53;; /* prueba con #FF6F61 o #1E90FF también */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+h2 {
+  font-family: 'Cursive', serif;
+  font-size: 1.5em;
+  color: #7c6b53;; /* prueba con #FF6F61 o #1E90FF también */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Contenedor de los botones */
+.botones {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;   
+    gap: 10px; 
+}
+
+/* Estilo de los botones */
 button {
     background: #c9b592;
     border: 1px solid #b1a084;
@@ -55,18 +74,35 @@ button {
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    align-items: center;
+    width: 200px;  
+    text-align: center;
 }
 
 button:hover {
-    transform: scale(1.10); 
+    transform: scale(1.10);
 }
 
-h1 {
-    color: #c9b592;
+
+/* Contenedor del juego: tablero + contador */
+.juego {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;              
+    margin-top: 10px;
 }
 
-h2{
-  color: #c9b592;
+.contador {
+    font-size: 22px;
+    font-style: oblique;
+    color: #7c6b53;
+    background-color: #f9f6ee;
+    border: 2px solid #c9b592;
+    border-radius: 10px;
+    padding: 15px 25px;
+    height: fit-content;
+    margin-top: 75px; 
 }
 
 
