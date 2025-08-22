@@ -19,7 +19,14 @@ const botBtn = document.getElementById("contraBot")
 //Obteniendo los elementos de los contadores y boton para borrar el contador 
 const contadorX = document.getElementById("contadorX")
 const contadorO = document.getElementById("contadorO")
+
 const borrarContadorBtn = document.getElementById("borrarContador")
+
+let contadoVictoriasX = parseFloat(localStorage.getItem("contadorX")) || 0;
+contadorX.textContent = `X: ${contadoVictoriasX}`;
+
+let contadoVictoriasO = parseFloat(localStorage.getItem("contadorO")) || 0;
+contadorO.textContent = `O: ${contadoVictoriasO}`;
 
 //Variables para el contador
 let puntosX = 0
@@ -149,10 +156,12 @@ function ganador(jugador) {
     if (jugador === "X") {
         // Suma un punto al gujador X
         puntosX++;
+        localStorage.setItem("contadorX", puntosX);
         contadorX.textContent = `X: ${puntosX}`;
     } else if (jugador === "O") {
         // Sino suma un punto al jugador O
         puntosO++;
+        localStorage.setItem("contadorO", puntosO);
         contadorO.textContent = `O: ${puntosO}`;
     }
 
@@ -174,6 +183,18 @@ reiniciarBtn.addEventListener("click", () => {
     turno = "X"
     
 })
+
+borrarContadorBtn.addEventListener("click", () => {
+    // Borra los contadores del localStorage
+    localStorage.removeItem("contadorX")
+    localStorage.removeItem("contadorO")
+    puntosX = 0
+    puntosO = 0
+    // Pone originalmente  0 
+    contadorX.textContent = "X: 0"
+    contadorO.textContent = "O: 0"
+})
+
 movimientos()
 
 
