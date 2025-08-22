@@ -13,12 +13,13 @@ const boxes = [box0, box1, box2, box3, box4, box5, box6, box7, box8]
 
 //Obteniendo los elementos del botón de reinicio y 1vs1
 const reiniciarBtn = document.getElementById("reiniciar")
-const oneVsOneButton = document.getElementById("contraJugador") //hacerlo
+const oneVsOneButton = document.getElementById("contraJugador") 
 const botBtn = document.getElementById("contraBot")
 
-//Obteniendo los elementos de los contadores
+//Obteniendo los elementos de los contadores y boton para borrar el contador 
 const contadorX = document.getElementById("contadorX")
 const contadorO = document.getElementById("contadorO")
+const borrarContadorBtn = document.getElementById("borrarContador")
 
 //Variables para el contador
 let puntosX = 0
@@ -26,14 +27,17 @@ let puntosO = 0
 //Variables para el turno
 let turno = "X"
 let gameOver = false
-
+//Variable de bot 
 let modo = 'bot';
+
+// Cuando se toca el boton ingresa al modo de juego que se quiere jugar
 oneVsOneButton.onclick = () => { modo = 'pvp'; reiniciarTablero(); };
 botBtn.onclick        = () => { modo = 'bot'; reiniciarTablero(); };
 
-// 2) Un único listener por casilla
+// A cada casilla del evento se le asigna un onclick
 boxes.forEach(casilla => {
   casilla.onclick = () => {
+    // Antes de jugar se verifica si el juego esta terminado o si la casilla ya tiene un valor
     if (gameOver || casilla.textContent) return;
 
     // Siempre escribe el símbolo del turno actual
@@ -41,7 +45,7 @@ boxes.forEach(casilla => {
     if (finalizarSiCorresponde()) return;
 
     if (modo === 'pvp') {
-      // 1 vs 1: alternar turno y listo
+      // 1 vs 1: alterna los turnos
       turno = (turno === 'X') ? 'O' : 'X';
     } else {
       // Bot: juega O automáticamente y vuelve el turno a X
@@ -52,24 +56,23 @@ boxes.forEach(casilla => {
   };
 });
 
-// 3) Helpers muy pequeños
 function finalizarSiCorresponde() {
-  const g = revisarGanador();
-  if (g) { ganador(g); return true; }
+    // Verifica si hay un ganador o un empate después de cada jugada
+  const resultadoGanador = revisarGanador();
+    // Si hay un ganador, muestra el mensaje y actualiza el contador
+  if (resultadoGanador) { ganador(resultadoGanador); return true; }
+  // Si hay un empate, muestra el mensaje
   if (esEmpate()) { empate(); return true; }
   return false;
 }
 
 function reiniciarTablero() {
+    // Reinicia el tablero y los contadores
   boxes.forEach(c => c.textContent = '');
   gameOver = false;
   turno = 'X';
 }
 reiniciarBtn.onclick = reiniciarTablero;
-
-
-
-
 
 function movimientos() {
     boxes.forEach((casilla) => {
@@ -78,7 +81,6 @@ function movimientos() {
             if (turno !== "X") return
             if (casilla.textContent !== "") return
 
-            // Juega
             casilla.textContent = "X"
 
             // ¿Ganó X?
@@ -88,13 +90,14 @@ function movimientos() {
 
             // Turno de O
             turno = "O"
+            // Espera un poco antes de que el bot juegue
             setTimeout(() => {
                 movCirculo()
                 const ganadorO = revisarGanador()
                 if (ganadorO) return ganador(ganadorO)
                 if (esEmpate()) return empate()
                 turno = "X"
-            }, 10)
+            }, 100)
         });
     });
 }
@@ -172,10 +175,6 @@ reiniciarBtn.addEventListener("click", () => {
     
 })
 movimientos()
-//Cuando se refresca la pantalla se borra los puntos 
-function actualizarContadores() {
-    contadorX.textContent = `X: ${puntosX}`
-    contadorO.textContent = `O: ${puntosO}`
-}
+
 
 

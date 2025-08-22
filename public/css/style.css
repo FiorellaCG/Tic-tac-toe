@@ -1,4 +1,3 @@
-/* Fondo general de la página */
 body {
     font-style: oblique;
     text-align: center;
@@ -44,18 +43,23 @@ body {
 h1 {
   font-family: 'Cursive', serif;
   font-size: 2.5em;
-  color: #7c6b53;; /* prueba con #FF6F61 o #1E90FF también */
+  color: #7c6b53;
   text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 
 h2 {
   font-family: 'Cursive', serif;
   font-size: 1.5em;
-  color: #7c6b53;; /* prueba con #FF6F61 o #1E90FF también */
+  color: #7c6b53;
   text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 
-/* Contenedor de los botones */
+h3 {
+  font-family: 'Cursive', serif;
+  color: #7c6b53;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
 .botones {
     display: flex;
     flex-direction: row; 
@@ -63,7 +67,6 @@ h2 {
     gap: 10px; 
 }
 
-/* Estilo de los botones */
 button {
     background: #c9b592;
     border: 1px solid #b1a084;
